@@ -1,51 +1,112 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+<!-- 
+  声明文档类型和语言
+  lang="zh-CN" 表示中文简体
+  确保文件保存为UTF-8编码格式
+-->
 <html lang="zh-CN">
 <head>
+    <!-- 
+      设置字符编码为UTF-8，这是支持中文的最佳编码方式
+      必须放在<head>的最前面
+    -->
     <meta charset="UTF-8">
+    
+    <!-- 
+      响应式视口设置，确保在移动设备上正确显示
+      width=device-width 使用设备宽度
+      initial-scale=1.0 初始缩放比例为1
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>�ҵ���Ʒ��</title>
+    
+    <!-- 页面标题 -->
+    <title>我的作品集</title>
+    
+    <!-- 引入外部CSS样式表 -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- 
+      添加HTML5 Shiv支持，使旧版IE支持HTML5元素
+      只有在需要支持IE8及以下版本时才需要
+    -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
+    <!-- 页面头部区域 -->
     <header>
-        <h1>��ӭ�����ҵ���Ʒ��</h1>
+        <!-- 主标题 -->
+        <h1>欢迎来到我的作品集</h1>
+        
+        <!-- 导航菜单 -->
         <nav>
             <ul>
-                <li><a href="#home">��ҳ</a></li>
-                <li><a href="#about">������</a></li>
-                <li><a href="#contact">��ϵ��ʽ</a></li>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#contact">联系方式</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- 作品展示区域 -->
     <section id="home">
-        <h2>�ҵ���Ʒ</h2>
+        <h2>我的作品</h2>
         <div class="gallery">
+            <!-- 作品1 -->
             <div class="gallery-item">
-                <img src="images/frist.jpg" alt="��Ʒ 1">
-                <p>��Ʒ 1 ����</p>
+                <!-- 
+                  图片标签，注意src路径是否正确
+                  添加loading="lazy"实现懒加载
+                  添加width和height属性避免布局偏移
+                -->
+                <img src="images/first.jpg" alt="作品1" loading="lazy" width="300" height="300">
+                <p>帅气的作品</p>
             </div>
+            
+            <!-- 作品2 -->
             <div class="gallery-item">
-                <img src="images/second.jpg" alt="��Ʒ 2">
-                <p>��Ʒ 2 ����</p>
+                <img src="images/second.jpg" alt="作品2" loading="lazy" width="300" height="300">
+                <p>测试用的对比</p>
             </div>
-            <!-- ���Ӹ�����Ʒ -->
+            
+            <!-- 可以继续添加更多作品 -->
         </div>
     </section>
 
+    <!-- 关于我区域 -->
     <section id="about">
-        <h2>������</h2>
-        <p>����һ���Ȱ��������ˣ�ϲ����ơ���Ӱ�ͱ�̡�</p>
+        <h2>关于我</h2>
+        <p>我是一个热爱创作的人，喜欢设计、摄影和编程。</p>
     </section>
 
+    <!-- 联系方式区域 -->
     <section id="contact">
-        <h2>��ϵ��ʽ</h2>
-        <p>���䣺your-email@example.com</p>
-        <p>�罻ý�壺<a href="https://twitter.com/your-profile">Twitter</a></p>
+        <h2>联系方式</h2>
+        <p>邮箱：your-email@example.com</p>
+        <p>社交媒体：<a href="http://adsl1.tbit.com.cn:21490/pages/viewpage.action?pageId=163228313" target="_blank" rel="noopener noreferrer">Twittererr</a></p>
     </section>
 
+    <!-- 页脚 -->
     <footer>
-        <p>&copy; 2023 �ҵ���Ʒ��</p>
+        <p><span id="currentYear"></span> 我的作品集</p>
     </footer>
+
+    <!-- JavaScript代码 -->
+    <script>
+        // 自动更新年份
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // 平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
